@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/07 15:46:52 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/10 15:20:19 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 INCLUDES		=	-I ./includes -I ./libft/includes
-SRCS			=	srcs/main.c
+SRCS			=	srcs/main.c\
+					srcs/errors.c\
+					srcs/list_dir.c\
+					srcs/print_file_mode.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 all: obj $(NAME)

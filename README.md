@@ -6,6 +6,7 @@ Attention !
 FRANGLISH
 Voir man ls pour les details.
 
+implement a mergesort
 Function allowed.
 opendir / readdir / closedir
 
@@ -108,6 +109,8 @@ Partie obligatoire:
 -t : Sort by time modified before sorting lexicographical order.
 
 option l more info:
+file mode, number of links, owner name, group name, number of bytes in the file, abbreviated month, 
+day-of-month file was last modified, hour file last modified, minute file last modified, and the pathname.
 
 En cas d'erreur le programme ls renverra la derniere valeur de errno.
 Si tout c'est bien deroule ls renverra 0.
