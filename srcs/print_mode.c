@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 15:34:39 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/11 15:44:16 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/11 15:53:34 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void		print_mode(mode_t st_mode)
 		ft_putchar('x');
 	else
 		ft_putchar('-');
-	print_file_mode_ex(st_mode);
+	print_mode_ex(st_mode);
 }
