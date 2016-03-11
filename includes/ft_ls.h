@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/10 15:58:57 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/11 15:52:20 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <time.h>
-#include <grp.h>
+# include <grp.h>
 # include <pwd.h>
 # include <uuid/uuid.h>
 # include <errno.h>
@@ -34,6 +34,8 @@
 void	usage(char c);
 void	ls_perror(char *str);
 void	list_dir(char *dir_name);
-void	print_file_mode(mode_t st_mode);
+void	print_mode(mode_t st_mode);
+void	print_user(uid_t id);
+void	print_group(gid_t id);
 
 #endif
