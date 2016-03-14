@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/11 19:22:08 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/14 13:14:27 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@
 # include <errno.h>
 # include <sys/acl.h>
 
-# define NO_FLAGS 0
-# define LIST_FLAG 1
-# define RECURSE_FLAG 2
-# define ADOT_FLAG 4
-# define REVERSE_FLAG 8
-# define TIME_FLAG 16
+typedef int		t_flag;
+# define F_NULL 0
+# define F_LIST 1
+# define F_RECS 2
+# define F_ADOT 4
+# define F_REVS 8
+# define F_TIME 16
+# define F_ERRO 1073741824
 
 typedef struct		s_lformat
 {
@@ -56,5 +58,6 @@ void	print_mode(mode_t st_mode);
 void	print_user(uid_t id);
 void	print_group(gid_t id);
 void	print_attr(char *pathname);
+t_flag	argv_check(int ac, char **av);
 
 #endif
