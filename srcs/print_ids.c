@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 15:47:19 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/11 19:02:07 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/14 17:56:22 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	print_group(gid_t id)
 
 	grp = getgrgid(id);
 	if (grp->gr_name)
-		ft_putstr(grp->gr_name);
+		return (ft_putstr(grp->gr_name));
 	ft_putnbr(id);
 }
