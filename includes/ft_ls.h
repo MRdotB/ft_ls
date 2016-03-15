@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/14 13:14:27 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/15 18:30:37 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <uuid/uuid.h>
 # include <errno.h>
 # include <sys/acl.h>
+# include <limits.h>
 
 typedef int		t_flag;
 # define F_NULL 0
@@ -35,29 +36,23 @@ typedef int		t_flag;
 # define F_TIME 16
 # define F_ERRO 1073741824
 
-typedef struct		s_lformat
-{
-	mode_t			mode;
-	char			attr;
-	uid_t			uid;
-	gid_t			gid;
-	off_t			size;
-	struct timespec	last_modif;
-	blkcnt_t		blocks;
-	char			*pathname;
-	int				color;
-	int				symlink_info;
-	char			*linkname;
-	dev_t			mkdev;
-}					t_lformat;
 
-void	usage(char c);
-void	ls_perror(char *str);
-void	list_dir(char *dir_name);
-void	print_mode(mode_t st_mode);
-void	print_user(uid_t id);
-void	print_group(gid_t id);
-void	print_attr(char *pathname);
-t_flag	argv_check(int ac, char **av);
+typedef struct			s_file
+{
+	char				*name;
+	char				*path;
+	struct stat			fs;
+	struct s_file		*next;
+}						t_file;
+
+void		usage(char c);
+void		ls_perror(char *str);
+void		print_mode(mode_t st_mode);
+void		print_user(uid_t id);
+void		print_group(gid_t id);
+void		print_attr(char *pathname);
+t_flag		argv_check(int ac, char **av);
+char		*get_path(char *arg);
+t_file		*list_file_info(char *dir_name);
 
 #endif

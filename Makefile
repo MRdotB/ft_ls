@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/14 11:31:02 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/15 15:23:58 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS			=	srcs/main.c\
 					srcs/print_attr.c\
 					srcs/print_ids.c\
 					srcs/print_attr.c\
-					srcs/argv_check.c
+					srcs/argv_check.c\
+					srcs/get_path.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 all: obj $(NAME)
