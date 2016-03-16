@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/16 13:45:12 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/16 21:13:51 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef int		t_flag;
 # define F_TIME 16
 # define F_ERRO 1073741824
 
-
 typedef struct			s_file
 {
 	char				*name;
@@ -52,9 +51,13 @@ void		print_mode(mode_t st_mode);
 void		print_user(uid_t id);
 void		print_group(gid_t id);
 void		print_attr(char *pathname);
-t_flag		argv_check(int ac, char **av);
+t_flag		options_check(int ac, char **av);
+char		**files_check(int ac, char **av);
 char		*get_path(char *arg);
 t_file		*get_t_file_info(char *dir_name);
 void 		printList(t_file *node);
+int			order(t_file *a, t_file *b);
+int			reverse(t_file *a, t_file *b);
+void		format_file(t_file *f, t_flag flag);
 
 #endif

@@ -6,13 +6,13 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/16 13:46:48 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/16 20:34:30 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 NAME			=	ft_ls
-FLAGS			=	-Wall -Werror -Wextra
+FLAGS			=	-Wall -Werror -Wextra -g
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
@@ -24,9 +24,12 @@ SRCS			=	srcs/main.c\
 					srcs/print_attr.c\
 					srcs/print_ids.c\
 					srcs/print_attr.c\
-					srcs/argv_check.c\
+					srcs/options_check.c\
+					srcs/files_check.c\
 					srcs/get_path.c\
-					srcs/merge_sort.c
+					srcs/merge_sort.c\
+					srcs/format_file.c\
+					srcs/order.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 all: obj $(NAME)
