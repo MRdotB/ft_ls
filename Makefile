@@ -6,26 +6,27 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/15 15:23:58 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/16 13:46:48 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 NAME			=	ft_ls
-FLAGS			=	-Wall -Werror -Wextra -g
+FLAGS			=	-Wall -Werror -Wextra
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 INCLUDES		=	-I ./includes -I ./libft/includes
 SRCS			=	srcs/main.c\
 					srcs/errors.c\
-					srcs/list_dir.c\
+					srcs/get_t_file_info.c\
 					srcs/print_mode.c\
 					srcs/print_attr.c\
 					srcs/print_ids.c\
 					srcs/print_attr.c\
 					srcs/argv_check.c\
-					srcs/get_path.c
+					srcs/get_path.c\
+					srcs/merge_sort.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 all: obj $(NAME)
@@ -46,7 +47,7 @@ obj:
 	@mkdir -p obj
 
 obj/%.o: srcs/%.c
-	@$(CC) $(FLAGS) $(INCLUDES) -c -o $@ $<
+	$(CC) $(FLAGS) $(INCLUDES) -c -o $@ $<
 
 clean:
 	@rm -f $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/15 18:30:37 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/16 13:45:12 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct			s_file
 	struct s_file		*next;
 }						t_file;
 
+void		merge_sort(t_file** head_ref, int (*f)(t_file*, t_file*));
 void		usage(char c);
 void		ls_perror(char *str);
 void		print_mode(mode_t st_mode);
@@ -53,6 +54,7 @@ void		print_group(gid_t id);
 void		print_attr(char *pathname);
 t_flag		argv_check(int ac, char **av);
 char		*get_path(char *arg);
-t_file		*list_file_info(char *dir_name);
+t_file		*get_t_file_info(char *dir_name);
+void 		printList(t_file *node);
 
 #endif
