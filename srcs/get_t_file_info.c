@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_file_info.c                                         :+:      :+:    :+:   */
+/*   get_t_file_info.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/07 15:53:44 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/15 19:28:23 by bchaleil         ###   ########.fr       */
+/*   Created: 2016/03/16 13:43:35 by bchaleil          #+#    #+#             */
+/*   Updated: 2016/03/16 13:47:55 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ static t_file	*push_front(t_file *lst, t_file *el)
 	return (el);
 }
 
-t_file				*list_file_info(char *dir_name)
+t_file				*get_t_file_info(char *dir_name)
 {
 	struct dirent	*p_dirent;
 	DIR				*p_dir;
 	t_file			*list;
 	struct stat		fs;
-	char			*path;
 
 	list = NULL;
 	p_dir = opendir(dir_name);
@@ -51,12 +50,10 @@ t_file				*list_file_info(char *dir_name)
 	}
 	while ((p_dirent = readdir(p_dir)) != NULL)
 	{
-		path = get_path(dir_name);
-		ft_putendl(path);
-		if (stat(ft_strjoin(path, p_dirent->d_name), &fs) == -1)    
+		if (stat(ft_strjoin(get_path(dir_name), p_dirent->d_name), &fs) == -1)    
 			ls_perror("stat fail");
 		else
-			list = push_front(list, new_elem(dir_name, path, fs));
+			list = push_front(list, new_elem(ft_strdup(p_dirent->d_name), dir_name, fs));
 	}
 	closedir(p_dir);
 	return (list);
