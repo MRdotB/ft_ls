@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ids.c                                        :+:      :+:    :+:   */
+/*   get_ids.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/11 15:47:19 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/14 17:56:22 by bchaleil         ###   ########.fr       */
+/*   Created: 2016/03/17 16:31:27 by bchaleil          #+#    #+#             */
+/*   Updated: 2016/03/17 16:31:30 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	print_user(uid_t id)
+char	*get_user(uid_t id)
 {
 	struct passwd 	*user;
 
 	user = getpwuid(id);
 	if (user->pw_name)
-		return (ft_putstr(user->pw_name));
-	ft_putnbr(id);
+		return (ft_strdup(user->pw_name));
+	return (ft_itoa(id));
 }
 
-void	print_group(gid_t id)
+char	*get_group(gid_t id)
 {
 	struct group 	*grp;
 
 	grp = getgrgid(id);
 	if (grp->gr_name)
-		return (ft_putstr(grp->gr_name));
-	ft_putnbr(id);
+		return (ft_strdup(grp->gr_name));
+	return (ft_itoa(id));
 }
