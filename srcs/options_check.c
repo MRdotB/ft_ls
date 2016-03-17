@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 14:48:53 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/16 14:48:55 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/17 16:37:41 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static t_flag	raise_flag(char c)
 		return (F_LIST);
 	else if (c == 'R')
 		return (F_RECS);
-	else if (c == 'l')
-		return (F_LIST);
 	else if (c == 'a')
 		return (F_ADOT);
 	else if (c == 'r')
