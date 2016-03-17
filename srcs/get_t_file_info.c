@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:43:35 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/16 13:47:55 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/17 16:20:36 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_file				*get_t_file_info(char *dir_name)
 	}
 	while ((p_dirent = readdir(p_dir)) != NULL)
 	{
-		if (stat(ft_strjoin(get_path(dir_name), p_dirent->d_name), &fs) == -1)    
+		if (lstat(ft_strjoin(get_path(dir_name), p_dirent->d_name), &fs) == -1)    
 			ls_perror("stat fail");
 		else
 			list = push_front(list, new_elem(ft_strdup(p_dirent->d_name), dir_name, fs));
