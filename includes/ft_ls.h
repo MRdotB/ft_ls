@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/16 21:13:51 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/17 15:39:34 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef int		t_flag;
 # define F_TIME 16
 # define F_ERRO 1073741824
 
+# define LEFT 0
+# define RIGHT 1
+
 typedef struct			s_file
 {
 	char				*name;
@@ -44,12 +47,19 @@ typedef struct			s_file
 	struct s_file		*next;
 }						t_file;
 
+typedef struct			s_pad
+{
+	int					prepad;
+	int					postpad;
+	int					direction;
+}						t_pad;
+
 void		merge_sort(t_file** head_ref, int (*f)(t_file*, t_file*));
 void		usage(char c);
 void		ls_perror(char *str);
-void		print_mode(mode_t st_mode);
-void		print_user(uid_t id);
-void		print_group(gid_t id);
+char		*get_mode(mode_t st_mode, char *pathname);
+char		*get_user(uid_t id);
+char		*get_group(gid_t id);
 void		print_attr(char *pathname);
 t_flag		options_check(int ac, char **av);
 char		**files_check(int ac, char **av);
@@ -59,5 +69,8 @@ void 		printList(t_file *node);
 int			order(t_file *a, t_file *b);
 int			reverse(t_file *a, t_file *b);
 void		format_file(t_file *f, t_flag flag);
+int			*max_padding(t_file *f, t_flag flag);
+char		*padding_str(char *str, int size, t_pad p);
+t_pad		ret_pad(int prepad, int postpad, int direction);
 
-#endif
+# endif
