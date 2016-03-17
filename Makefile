@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/17 16:31:45 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/17 17:05:18 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS			=	srcs/main.c\
 					srcs/merge_sort.c\
 					srcs/format_file.c\
 					srcs/padding.c\
+					srcs/get_date.c\
 					srcs/order.c
 OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 

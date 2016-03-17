@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/17 15:39:34 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/17 17:19:58 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef int		t_flag;
 # define LEFT 0
 # define RIGHT 1
 
+# define SIXMONTH 15778458
 typedef struct			s_file
 {
 	char				*name;
@@ -72,5 +73,6 @@ void		format_file(t_file *f, t_flag flag);
 int			*max_padding(t_file *f, t_flag flag);
 char		*padding_str(char *str, int size, t_pad p);
 t_pad		ret_pad(int prepad, int postpad, int direction);
+char		*get_date(struct timespec t);
 
 # endif
