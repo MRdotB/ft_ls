@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 10:38:07 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/17 15:47:01 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/18 18:31:36 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ t_pad			ret_pad(int prepad, int postpad, int direction)
 	return (p);
 }
 
-int			*max_padding(t_file *f, t_flag flag)
+void			max_padding(int padding[], t_file *f, t_flag flag)
 {
-	int	*padding;
+	int	i;
 
-	padding = (int*)ft_memalloc(sizeof(int) * 5);
+	i = 0;
+	while (i < 5)
+		padding[i++] = 0;
 	while (f != NULL)
 	{
-		if (flag ^ F_ADOT && f->name[0] == '.')
+		if (!(flag & F_ADOT) && f->name[0] == '.')
 		{
 			f = f->next;
 			continue ;
@@ -51,10 +53,9 @@ int			*max_padding(t_file *f, t_flag flag)
 			padding[2] = (int)ft_strlen(get_group(f->fs.st_gid));
 		if (padding[3] < ft_numlen(f->fs.st_size))
 			padding[3] = ft_numlen(f->fs.st_size);
+		padding[4] += f->fs.st_blocks; 
 		f = f->next;
 	}
-	padding[4] = 0;
-	return (padding);
 }
 
 char		*padding_str(char *str, int size, t_pad p)
@@ -72,17 +73,14 @@ char		*padding_str(char *str, int size, t_pad p)
 		i = p.prepad;
 		j = -1;
 		while (++j < len)
-			r[i++] = str[j];;
+			r[i++] = str[j];
 	}
 	if (p.direction == RIGHT)
 	{
 		i = size - 1 + p.prepad;
 		while (len > 0)
-		{
-			len--;
-			r[i] = str[len];
-			i--;
-		}
+			r[i--] = str[--len];
 	}
+	ft_memdel((void**)&str);
 	return (r);
 }
