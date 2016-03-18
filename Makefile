@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/18 13:28:20 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/18 18:15:00 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS			=	srcs/main.c\
 					srcs/errors.c\
 					srcs/get_t_file_info.c\
 					srcs/get_mode.c\
+					srcs/get_min_maj.c\
 					srcs/get_ids.c\
 					srcs/options_check.c\
 					srcs/files_check.c\

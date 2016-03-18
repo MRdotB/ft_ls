@@ -6,14 +6,14 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/18 15:58:13 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/18 20:39:06 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
-# include "libft.h"
 
+# include "libft.h"
 # include <stdio.h>
 # include <dirent.h>
 # include <sys/stat.h>
@@ -28,6 +28,7 @@
 # include <limits.h>
 
 typedef int		t_flag;
+
 # define F_NULL 0
 # define F_LIST 1
 # define F_RECS 2
@@ -41,6 +42,7 @@ typedef int		t_flag;
 # define RIGHT 1
 
 # define SIXMONTH 15778458
+
 typedef struct			s_file
 {
 	char				*name;
@@ -63,6 +65,7 @@ int			order(t_file *a, t_file *b);
 void		usage(char c);
 void		ls_perror(char *str);
 
+char		*get_min_maj(dev_t	rdev);
 char		*get_mode(mode_t st_mode, char *pathname);
 char		*get_user(uid_t id);
 char		*get_group(gid_t id);
@@ -77,8 +80,6 @@ int			bytime(t_file *a, t_file *b);
 t_flag		options_check(int ac, char **av);
 char		**files_check(int ac, char **av);
 
-
-void 		printList(t_file *node);
-int			*max_padding(t_file *f, t_flag flag);
+void		max_padding(int padding[], t_file *f, t_flag flag);
 
 # endif
