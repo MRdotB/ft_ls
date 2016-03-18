@@ -6,18 +6,35 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 14:31:24 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/16 14:46:15 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/18 15:51:33 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	order(t_file *a, t_file *b)
+int		order(t_file *a, t_file *b)
 {
 	return (ft_strcmp(b->name, a->name) > 0);
 }
 
-int	reverse(t_file *a, t_file *b)
+int		bytime(t_file *a, t_file *b)
 {
-	return (ft_strcmp(b->name, a->name) < 0);
+	return (b->fs.st_mtimespec.tv_nsec < a->fs.st_mtimespec.tv_nsec);
+}
+
+void	recursive_reverse(t_file **head_ref)
+{
+	t_file	*first;
+	t_file	*rest;
+
+	if (*head_ref == NULL)
+		return ;
+	first = *head_ref;  
+	rest  = first->next;
+	if (rest == NULL)
+		return ;
+	recursive_reverse(&rest);
+	first->next->next  = first;  
+	first->next  = NULL;          
+	*head_ref = rest;              
 }
