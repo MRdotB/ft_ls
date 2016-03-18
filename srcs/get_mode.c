@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 11:10:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/17 16:25:59 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/18 16:55:13 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static char		*get_mode_ex_ex(mode_t st_mode, char *r, int i)
 		r[i++] = '-';
 	return (r);
 }
+
 static char		*get_mode_ex(mode_t st_mode, char *r, int i)
 {
 	if (st_mode & S_ISUID && st_mode & S_IXUSR)
@@ -78,14 +79,14 @@ char			*get_mode(mode_t st_mode, char *pathname)
 		r[i++] = 'c';
 	else if (S_ISDIR(st_mode))
 		r[i++] = 'd';
-	else if (S_ISREG(st_mode))
-		r[i++] = '-';
-	else if (S_ISBLK(st_mode))
-		r[i++] = 'b';
+	else if (S_ISLNK(st_mode))
+		r[i++] = 'l';
 	else if (S_ISSOCK(st_mode))
 		r[i++] = 's';
-	else
-		r[i++] = 'l';
+	else if (S_ISFIFO(st_mode))
+		r[i++] = 'p';
+	else if (S_ISREG(st_mode))
+		r[i++] = '-';
 	r[i++] = (st_mode & S_IRUSR) ? 'r' : '-';
 	r[i++] = (st_mode & S_IWUSR) ? 'w' : '-';
 	return (get_mode_ex(st_mode, r, i));
