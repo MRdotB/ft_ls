@@ -6,25 +6,44 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:18:58 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/17 18:52:48 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/18 20:57:20 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void printList(t_file *node)
+void	recurse(char *file, t_flag flag)
 {
-	while (node != NULL)
+	t_file	*f;
+
+	f = get_t_file_info(file);
+	if (flag & F_TIME)
+		merge_sort(&f, bytime);
+	else
+		merge_sort(&f, order);
+	if (flag & F_REVS)
+		recursive_reverse(&f);
+	format_file(f, flag);
+	if (flag & F_RECS)
 	{
-		ft_putendl(node->name);
-		node = node->next;
+		while (f != NULL)
+		{
+			if (ft_strcmp(f->name, ".") == 0 || ft_strcmp(f->name, "..") == 0)
+			{
+				f = f->next;
+				continue ;
+			}
+			if (S_ISDIR(f->fs.st_mode))
+				recurse(ft_strjoin(get_path(f->path), f->name), flag);
+			f = f->next;
+		}
 	}
+	//free list
 }
 
 int	main(int ac, char **av)
 {
 
-	t_file	*f;
 	t_flag	flag;
 	char	**files;
 	int		i;
@@ -37,9 +56,7 @@ int	main(int ac, char **av)
 	files = files_check(ac, av); 
 	while (files[i])
 	{
-		f = get_t_file_info(files[i]);
-		merge_sort(&f, order);
-		format_file(f, flag);
+		recurse(files[i], flag);
 		i++;
 	}
 	return (0);
