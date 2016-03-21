@@ -6,7 +6,7 @@
 #    By: bchaleil <hello@baptistechaleil.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/12 16:21:36 by bchaleil          #+#    #+#              #
-#    Updated: 2016/03/18 18:15:00 by bchaleil         ###   ########.fr        #
+#    Updated: 2016/03/21 17:35:51 by bchaleil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,9 @@ OBJS			=	$(SRCS:srcs/%.c=obj/%.o)
 
 all: obj $(NAME)
 
+$(LIB):
+	@make -C $(LIB_PATH)
+
 $(NAME): $(LIB) $(OBJS)
 	@echo "  __ _     _           "
 	@echo " / _| |   | |          "
@@ -42,10 +45,7 @@ $(NAME): $(LIB) $(OBJS)
 	@echo "|  _| __| | / __| / __|"
 	@echo "| | | |_  | \__ \| (__ "
 	@echo "|_|  \__| |_|___(_)___|"
-	@$(CC) $(FLAGS) -o $@ $^ $(LIB_LINK)
-
-$(LIB):
-	@make -C $(LIB_PATH)
+	$(CC) $(FLAGS) -o $@ $^
 
 obj:
 	@mkdir -p obj

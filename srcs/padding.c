@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 10:38:07 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/18 18:31:36 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:00:19 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_pad			ret_pad(int prepad, int postpad, int direction)
 	t_pad	p;
 
 	p.prepad = prepad;
-	p.postpad = postpad;	
+	p.postpad = postpad;
 	p.direction = direction;
 	return (p);
 }
@@ -53,12 +53,12 @@ void			max_padding(int padding[], t_file *f, t_flag flag)
 			padding[2] = (int)ft_strlen(get_group(f->fs.st_gid));
 		if (padding[3] < ft_numlen(f->fs.st_size))
 			padding[3] = ft_numlen(f->fs.st_size);
-		padding[4] += f->fs.st_blocks; 
+		padding[4] += f->fs.st_blocks;
 		f = f->next;
 	}
 }
 
-char		*padding_str(char *str, int size, t_pad p)
+char			*padding_str(char *str, int size, t_pad p)
 {
 	char	*r;
 	int		i;
