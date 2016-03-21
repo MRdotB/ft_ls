@@ -6,11 +6,36 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 15:01:34 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/16 16:33:51 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:11:26 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+static void	bubble_sort(int argc, char **argv)
+{
+	int		c;
+	int		d;
+	char	*swap;
+
+	c = 0;
+	d = 0;
+	while (c < argc)
+	{
+		d = 0;
+		while (d < argc)
+		{
+			if (ft_strcmp(argv[d], argv[d + 1]) > 0)
+			{
+				swap = argv[d];
+				argv[d] = argv[d + 1];
+				argv[d + 1] = swap;
+			}
+			d++;
+		}
+		c++;
+	}
+}
 
 char		**files_check(int ac, char **av)
 {
@@ -37,5 +62,6 @@ char		**files_check(int ac, char **av)
 		j++;
 	}
 	r[j] = NULL;
+	bubble_sort(j - 1, r);
 	return (r);
 }
