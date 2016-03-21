@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 20:59:43 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/18 13:29:25 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:10:39 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_path(char *arg)
 	int		i;
 
 	r = ft_strdup(arg);
-	if (ft_strncmp("./", r, 2) < 0 && ft_strncmp("/", r, 1) < 0)	
+	if (ft_strncmp("./", r, 2) < 0 && ft_strncmp("/", r, 1) < 0)
 		r = ft_concat("./", r, 2);
 	i = ft_strlen(r);
 	if (r[i - 1] != '/')
