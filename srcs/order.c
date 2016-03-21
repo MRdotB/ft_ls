@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 14:31:24 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/18 15:51:33 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:01:13 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	recursive_reverse(t_file **head_ref)
 
 	if (*head_ref == NULL)
 		return ;
-	first = *head_ref;  
-	rest  = first->next;
+	first = *head_ref;
+	rest = first->next;
 	if (rest == NULL)
 		return ;
 	recursive_reverse(&rest);
-	first->next->next  = first;  
-	first->next  = NULL;          
-	*head_ref = rest;              
+	first->next->next = first;
+	first->next = NULL;
+	*head_ref = rest;
 }
