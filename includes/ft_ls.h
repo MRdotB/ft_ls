@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/18 20:39:06 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:38:24 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef int		t_flag;
 # define F_REVS 8
 # define F_TIME 16
 # define F_COLO 32
+# define F_PATH 64
+# define F_LAST 128
 # define F_ERRO 1073741824
 
 # define LEFT 0
@@ -69,7 +71,7 @@ char		*get_min_maj(dev_t	rdev);
 char		*get_mode(mode_t st_mode, char *pathname);
 char		*get_user(uid_t id);
 char		*get_group(gid_t id);
-char		*get_date(struct timespec t);
+t_string	*get_date(struct timespec t);
 char		*get_path(char *arg);
 t_file		*get_t_file_info(char *dir_name);
 void		format_file(t_file *f, t_flag flag);
