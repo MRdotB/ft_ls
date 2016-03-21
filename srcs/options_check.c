@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 14:48:53 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/17 16:37:41 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/21 18:05:25 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ static t_flag	raise_flag(char c)
 		return (F_REVS);
 	else if (c == 't')
 		return (F_TIME);
+	else if (c == 'G')
+		return (F_COLO);
 	else
 		return (F_ERRO);
 }
 
-t_flag		options_check(int ac, char **av)
+t_flag			options_check(int ac, char **av)
 {
 	t_flag	flag;
 	int		i;
@@ -50,7 +52,7 @@ t_flag		options_check(int ac, char **av)
 			}
 		}
 		else
-			break;
+			break ;
 		i++;
 	}
 	return (flag);
