@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:34:40 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/21 18:38:24 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/22 13:15:01 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char		*get_group(gid_t id);
 t_string	*get_date(struct timespec t);
 char		*get_path(char *arg);
 t_file		*get_t_file_info(char *dir_name);
+char		*get_color(mode_t st_mode);
 void		format_file(t_file *f, t_flag flag);
 t_pad		ret_pad(int prepad, int postpad, int direction);
 char		*padding_str(char *str, int size, t_pad p);
