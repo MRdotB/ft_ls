@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 14:48:53 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/22 13:32:09 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:16:19 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static t_flag	raise_flag(char c)
 		return (F_TIME);
 	else if (c == 'G')
 		return (F_COLO);
+	else if (c == '1')
+		return (0);
 	else
 		return (F_ERRO);
 }
