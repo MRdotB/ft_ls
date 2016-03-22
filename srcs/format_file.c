@@ -6,13 +6,13 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 20:34:53 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/21 20:11:03 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/22 14:01:53 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	format_file_link(t_file *f, t_string *r)
+void	format_file_link(t_file *f, t_string *r, t_flag flag)
 {
 	char		*linkname;
 
@@ -31,21 +31,28 @@ void	format_file_link(t_file *f, t_string *r)
 		ft_memdel((void**)&linkname);
 	}
 	else
+	{
+		if (flag & F_COLO)
+			ft_string_append(r, get_color(f->fs.st_mode));
 		ft_string_append(r, f->name);
+		if (flag & F_COLO)
+			ft_string_append(r, RESET);
+	}
 }
 
-void	format_file_ex3(t_file *f, t_string *r, int padding[])
+void	format_file_ex3(t_file *f, t_string *r, int padding[], t_flag flag)
 {
 	t_string	*date;
 
 	if (S_ISBLK(f->fs.st_mode) || S_ISCHR(f->fs.st_mode))
 		ft_string_append(r, get_min_maj(f->fs.st_rdev));
 	else
-		ft_string_append(r, padding_str(ft_itoa(f->fs.st_size), padding[3], ret_pad(0, 1, RIGHT)));
+		ft_string_append(r, padding_str(ft_itoa(f->fs.st_size),
+					padding[3], ret_pad(0, 1, RIGHT)));
 	date = get_date(f->fs.st_mtimespec);
 	ft_string_append(r, date->data);
 	ft_string_free(date);
-	format_file_link(f, r);
+	format_file_link(f, r, flag);
 }
 
 void	format_file_ex2(t_file *f, t_string *r, int padding[])
@@ -76,10 +83,16 @@ void	format_file_ex1(t_file *f, t_flag flag, int padding[])
 	if (flag & F_LIST)
 	{
 		format_file_ex2(f, r, padding);
-		format_file_ex3(f, r, padding);
+		format_file_ex3(f, r, padding, flag);
 	}
 	else
+	{
+		if (flag & F_COLO)
+			ft_string_append(r, get_color(f->fs.st_mode));
 		ft_string_append(r, f->name);
+		if (flag & F_COLO)
+			ft_string_append(r, RESET);
+	}
 	ft_string_append(r, "\n");
 	ft_putstr(r->data);
 	ft_string_free(r);
@@ -89,8 +102,9 @@ void	format_file(t_file *f, t_flag flag)
 {
 	int			padding[5];
 
-	if (f && (flag & F_PATH || flag & F_RECS))
+	if (f && flag & F_RECS)
 	{
+		ft_putstr("\n");
 		ft_putstr(f->path);
 		ft_putstr(":\n");
 	}
@@ -105,6 +119,4 @@ void	format_file(t_file *f, t_flag flag)
 		format_file_ex1(f, flag, padding);
 		f = f->next;
 	}
-	if ((flag & F_PATH || flag & F_RECS) && !(flag & F_LAST))
-		ft_putstr("\n");
 }

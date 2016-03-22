@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 14:31:24 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/21 18:01:13 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/22 13:48:14 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		order(t_file *a, t_file *b)
 
 int		bytime(t_file *a, t_file *b)
 {
-	return (b->fs.st_mtimespec.tv_nsec < a->fs.st_mtimespec.tv_nsec);
+	return (b->fs.st_mtimespec.tv_sec < a->fs.st_mtimespec.tv_sec);
 }
 
 void	recursive_reverse(t_file **head_ref)
