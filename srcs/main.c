@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 15:18:58 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/22 14:05:29 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:52:53 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,16 @@ int			main(int ac, char **av)
 	t_flag	flag;
 	char	**files;
 	int		i;
+	int		count;
 
 	i = 0;
+	count = 0;
 	flag = options_check(ac, av);
 	files = files_check(ac, av);
+	while (files[count])
+		count++;
+	if (count > 1 || flag & F_RECS)
+		flag |= F_PATH;
 	while (files[i])
 	{
 		recurse_dir(files[i], flag);

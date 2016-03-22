@@ -6,7 +6,7 @@
 /*   By: bchaleil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 20:34:53 by bchaleil          #+#    #+#             */
-/*   Updated: 2016/03/22 14:01:53 by bchaleil         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:52:50 by bchaleil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,13 @@ void	format_file_ex1(t_file *f, t_flag flag, int padding[])
 void	format_file(t_file *f, t_flag flag)
 {
 	int			padding[5];
+	static int	first = 0;
 
-	if (f && flag & F_RECS)
+	if (f && (flag & F_PATH || flag & F_RECS))
 	{
-		ft_putstr("\n");
+		if (first)
+			ft_putstr("\n");
+		first = 1;
 		ft_putstr(f->path);
 		ft_putstr(":\n");
 	}
